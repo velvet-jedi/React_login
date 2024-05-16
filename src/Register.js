@@ -122,7 +122,36 @@ const Register = () => {
             <span aria-label="at symbol">@</span> 
             <span aria-label="hashtag">#</span> 
             <span aria-label="dollar sign">$</span>
+            <span aria-label="percent">%</span>
           </p>
+
+          <label htmlFor="confirm_pwd">
+          Confirm Password:
+          <span className={validMatch && matchPwd ? "valid" : "hide"}>
+            <FontAwesomeIcon icon={faCheck}></FontAwesomeIcon>
+          </span>
+          <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+            <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
+          </span>
+        </label>
+        <input 
+          type="password" id='confirm_pwd' 
+          // ref= {userRef} // to set focus on the input line 32  
+          onChange={(e) => setMatchPwd(e.target.value)} // tie the onchange event with setting the state 
+          required
+          aria-invalid={validMatch ? "false" : "true"}
+          aria-describedby="confirmnote" // another element to give the description of the input field
+          onFocus={() => setMatchFocus(true)}
+          onBlur={() => setMatchFocus(false)}
+          />      
+
+          {/* show the input instructions only when focus is on the input and user state has some value which is also invalid   */}
+          <p id='confirmnote' className={matchFocus &&
+            !validMatch ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle} />
+            Must match the first password.<br />  
+          </p>
+          
 
 
       </form>
