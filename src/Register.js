@@ -55,12 +55,24 @@ const Register = () => {
       setErrMsg('');  // blank the  error message while user changes any input state 
     }, [user, pwd, matchPwd])
 
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const v1 = USER_REGEX.test(user);
+      const v2 = PWD_REGEX.test(pwd);
+      if (!v1 || !v2) {
+        setErrMsg('Invalid Entry');
+        return;
+      }
+      console.log(user, pwd);
+      setSuccess(true);
+    }
+
   return (
     <section>
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} 
       aria-live="assertive">{errMsg}</p>
       <h1>Register</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="username">
           Username:
           <span className={validName ? "valid" : "hide"}>
@@ -151,11 +163,16 @@ const Register = () => {
             <FontAwesomeIcon icon={faInfoCircle} />
             Must match the first password.<br />  
           </p>
-          
 
-
+          <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
       </form>
-      
+      <p>
+        Already registered?<br />
+        { <span className="line">
+          {/* this will be the router link */}
+          <a href="#">Sign In</a> 
+        </span> }
+      </p>
     </section>
   )
 }
