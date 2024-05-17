@@ -68,7 +68,7 @@ const Register = () => {
         setErrMsg('Invalid Entry');
         return;
       }
-      try {
+      try {   // if we are able to get a response
         const response = await axios.post(REGISTER_URL, 
           JSON.stringify({ user, pwd}) // the backend is expecting this data
         , {
@@ -80,7 +80,16 @@ const Register = () => {
         console.log(JSON.stringify(response));
         setSuccess(true);
       } catch (error) {  // error object exists
-        if(!error?.response){ // response property exists but is set to false
+
+        // error is either network error or no response
+        /*
+        You would need to explicitly check if error is defined
+         before accessing error.response. If you forget to
+          check, it can lead to runtime errors.
+
+
+         */
+        if(!error?.response){ // optional chaining to check if the response property exists on the error object
           setErrMsg('No Server Response'); // error is either 
         } else if (error.response?.status === 409) {
           setErrMsg('Username Already Exists');
