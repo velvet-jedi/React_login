@@ -5,3 +5,5 @@
 4- Verbose Errors for inputs
 5- Enforced Validation on form submission no hacky hacky from the console no grabby the button keeeeeepping it disabed!
 6- Semantic HTML
+7- Axios
+8- Context API
