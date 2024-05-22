@@ -1,10 +1,12 @@
 # Getting Started with Create React App
-1- Regex for password and username validation
-2- State and refs
-3- UseEffect and validation
-4- Verbose Errors for inputs
-5- Enforced Validation on form submission no hacky hacky from the console no grabby the button keeeeeepping it disabed!
-6- Semantic HTML
-7- Axios
-8- Context API
-9- Secure Coding
+* Regex for password and username validation
+* State and refs (to modify DOM from the components)
+* UseEffect and validation
+* Verbose Errors for inputs
+* Enforced Validation on form submission no hacky hacky from the console no grabby the button keeeeeepping it disabed!
+* Semantic HTML
+* Axios for requests
+* Context API
+* React Router v6 role-based authorization
+* concept of routing management (private, public, catch all)
+* Layout and outlet (for placeholding child components)
