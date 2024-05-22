@@ -56,8 +56,7 @@ const Login = () => {
                 setErrMsg('Login Failed');
             }
             errRef.current.focus(); // set focus to error message
-        }
-        
+        }        
     }
 
     return (
