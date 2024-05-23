@@ -1,7 +1,7 @@
 // app component is the root of the component hierarchy
-import Register from './Register';
+import Register from './components/Register';
 import React from 'react';
-import Login from './login';
+import Login from './components/Login';
 import Admin from './components/Admin';
 import Editor from './components/Editor';
 import Missing from './components/Missing';
