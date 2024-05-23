@@ -10,3 +10,4 @@
 * React Router v6 role-based authorization
 * concept of routing management (private, public, catch all)
 * Layout and outlet (for placeholding child components)
+* Custom useAuth hook

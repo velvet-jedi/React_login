@@ -1,13 +1,15 @@
-import { useRef, useState, useEffect, useContext } from "react"
+import { useRef, useState, useEffect } from "react"
 import React from "react";
-import AuthContext from "../context/AuthProvider";
+// import AuthContext from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 import axios from '../api/axios'
 
 const LOGIN_URL= '/auth'; 
 
 //functional component
 const Login = () => {
-    const {setAuth} = useContext(AuthContext);
+    // const {setAuth} = useContext(AuthContext);
+    const {setAuth} = useAuth();
     const userRef = useRef();
     const errRef = useRef();
 

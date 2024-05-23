@@ -9,30 +9,30 @@ import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
 import Layout from './components/Layout';
 import Unauthorized from './components/Unauthorized';
+import RequireAuth from './components/RequireAuth';
 import {Routes, Route} from 'react-router-dom';
+
 
 // functional componeent
 function App() {
   return (
-    // <main className = "App">
-    //   {/* <Register/> */}
-    //   {/* <Login />     */}
-    //   <Layout/>
-    //   </main>
+    
     <Routes>
       <Route path='/' element={<Layout />}>
         {/* piublic rutes */}
         <Route path='register' element={<Register/>}/>
         <Route path='login' element={<Login/>}/>
-        <Route path='linkpage' element={<Login/>}/>
-        <Route path='unauthorized' element={<Login/>}/>
+        <Route path='linkpage' element={<LinkPage/>}/>
+        <Route path='unauthorized' element={<Unauthorized/>}/>
         
         {/* private routes */}
+        <Route element={<RequireAuth />}>
         <Route path='admin' element={<Admin/>}/>
         <Route path='editor' element={<Editor/>}/>
         <Route path='lounge' element={<Lounge/>}/>
         <Route path='/' element={<LinkPage/>}/>
-        
+        </Route>
+
         {/* catch all */}
         <Route path='*' element={<Missing/>}/>
       </Route>
