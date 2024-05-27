@@ -7,7 +7,7 @@ const Lounge = () => {
             <br />
             <p>Admins and Editors can hang out here.</p>
             <div className="flexGrow">
-                <Link to="/">Home</Link>
+                <Link to="/">User Home</Link>
             </div>
         </section>
     )

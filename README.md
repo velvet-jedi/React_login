@@ -11,3 +11,5 @@
 * concept of routing management (private, public, catch all)
 * Layout and outlet (for placeholding child components)
 * Custom useAuth hook
+* Manageing history - send user to the intended page after logging in 
+* useNavigate for programmatic navigation

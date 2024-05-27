@@ -3,6 +3,7 @@ import React from "react";
 // import AuthContext from "../context/AuthProvider";
 import useAuth from "../hooks/useAuth";
 import axios from '../api/axios'
+import {Link, useNavigate, useLocation} from "react-router-dom";
 
 const LOGIN_URL= '/auth'; 
 
@@ -10,6 +11,16 @@ const LOGIN_URL= '/auth';
 const Login = () => {
     // const {setAuth} = useContext(AuthContext);
     const {setAuth} = useAuth();
+
+    const navigate = useNavigate();
+   
+    // Get the current location to understand where the user came from
+    const location = useLocation();
+   
+    // get the user back to where they came from to login page, after a success login
+    // If there is a "from" state in the location (see requireAuth), use it; otherwise, default to "/"
+    const from = location.state?.from?.pathname || "/"; 
+
     const userRef = useRef();
     const errRef = useRef();
 
@@ -17,7 +28,7 @@ const Login = () => {
     const [user, setUser] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
+    // const [success, setSuccess] = useState(false);
 
     // focus on the first input on first load
     useEffect(() => {
@@ -45,7 +56,8 @@ const Login = () => {
             setAuth({user, pwd, roles, accessToken});
             setUser('');
         setPwd('');
-        setSuccess(true);
+        // setSuccess(true);
+        navigate(from, {replace: true}); // on success ful login navigate to the original location "from" where the user came to login
             
         } catch (error) { // what can go wrong?
             if(!error?.response) {
@@ -62,17 +74,17 @@ const Login = () => {
     }
 
     return (
-        <>
-        {
-            success ? (
-                <section>
-                    <h1>Sucssefully Logged in!</h1>
-                    <br />
-                    <p>
-                        <a href="#">Go to home</a>
-                    </p>
-                </section>
-            ) : (
+        // <>
+        // {
+        //     success ? (
+        //         <section>
+        //             <h1>Sucssefully Logged in!</h1>
+        //             <br />
+        //             <p>
+        //                 <a href="#">Go to home</a>
+        //             </p>
+        //         </section>
+        //     ) : (
         
         <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"}
@@ -116,9 +128,8 @@ const Login = () => {
             </p>
 
         </section>
-            )
-        }
-        </>
+        //     )}
+        // </>
     )
 }
 
