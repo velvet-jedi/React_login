@@ -7,6 +7,7 @@ import Editor from './components/Editor';
 import Missing from './components/Missing';
 import Lounge from './components/Lounge';
 import LinkPage from './components/LinkPage';
+import Home from './components/Home';
 import Layout from './components/Layout';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth';
@@ -26,16 +27,27 @@ function App() {
         <Route path='unauthorized' element={<Unauthorized/>}/>
         
         {/* private routes */}
-        <Route element={<RequireAuth />}>
-        <Route path='admin' element={<Admin/>}/>
-        <Route path='editor' element={<Editor/>}/>
-        <Route path='lounge' element={<Lounge/>}/>
-        <Route path='/' element={<LinkPage/>}/>
+        
+        <Route element={<RequireAuth allowedRoles={[5150]}/>}>
+          <Route path='admin' element={<Admin/>}/>
+        </Route>
+        
+        <Route element={<RequireAuth allowedRoles={[1984]}/>}>
+          <Route path='editor' element={<Editor/>}/>
+        </Route>
+        
+        <Route element={<RequireAuth allowedRoles={[1984, 5150]}/>}>
+          <Route path='lounge' element={<Lounge/>}/>
+        </Route>
+      
+        <Route element={<RequireAuth allowedRoles={[2001]}/>}>
+          <Route path='/' element={<Home/>}/>
+        </Route>
         </Route>
 
         {/* catch all */}
         <Route path='*' element={<Missing/>}/>
-      </Route>
+      
     </Routes>
   );
 }

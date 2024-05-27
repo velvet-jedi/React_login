@@ -13,3 +13,4 @@
 * Custom useAuth hook
 * Manageing history - send user to the intended page after logging in 
 * useNavigate for programmatic navigation
+* Role based authorization
