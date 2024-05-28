@@ -17,3 +17,4 @@
 * Component lifecycle management using useEffect (mount)
 * Token refresh
 * Session management
+* Interceptor for private axios (separation of concerns) attaching JWT and retry reqeusts
