@@ -14,4 +14,6 @@
 * Manageing history - send user to the intended page after logging in 
 * useNavigate for programmatic navigation
 * Role based authorization
-* Component lifecycle management using useEffect
+* Component lifecycle management using useEffect (mount)
+* Token refresh
+* Session management
