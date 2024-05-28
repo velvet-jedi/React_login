@@ -5,7 +5,7 @@
 * Verbose Errors for inputs
 * Enforced Validation on form submission no hacky hacky from the console no grabby the button keeeeeepping it disabed!
 * Semantic HTML
-* Axios for requests
+* Axios for requests. is a promise based HTTP client for the web
 * Context API
 * React Router v6 role-based authorization
 * concept of routing management (private, public, catch all)
