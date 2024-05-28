@@ -2,10 +2,16 @@ import {useState, useEffect} from 'react';
 // import axios from '../api/axios';
 import useAxiosPrivate from '../hooks/useAxiosPrivate';
 
+import {useNavigate, useLocation} from 'react-router-dom';
+
 const Users = () => {
     const [users, setUsers] = useState();
 
     const axiosPrivate = useAxiosPrivate();
+
+    // handle auto logout
+    const navigate = useNavigate();
+    const location = useLocation();    
 
     useEffect(() => {
         let isMounted = true;
@@ -21,6 +27,8 @@ const Users = () => {
                 isMounted && setUsers(response.data); // u[pdate the usre state with the response data]
             } catch (err) {
                 console.error(err);
+                // head back to login, with current location as state, when needed to reauthenticate on token expiry
+                navigate('/login', {state: {from: location}, replace: true}); // pass the current location, after successful login redirect to that place, by placing it into the history stack
             }
         }
         getUsers();

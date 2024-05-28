@@ -15,6 +15,6 @@
 * useNavigate for programmatic navigation
 * Role based authorization
 * Component lifecycle management using useEffect (mount)
-* Token refresh
+* Refresh token and access token
 * Session management
 * Interceptor for private axios (separation of concerns) attaching JWT and retry reqeusts
