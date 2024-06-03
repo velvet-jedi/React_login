@@ -11,6 +11,7 @@ const PersistLogin = () => {
     // Verify Refresh Token This effect runs once when the component mounts.
 
     useEffect(() => {
+        let isMounted = true;
         const verifyRefreshToken = async () => {
             try {
                 await refresh(); // reach out for cookie and send us back an access token
@@ -19,11 +20,13 @@ const PersistLogin = () => {
                 console.log(error);
             }
             finally { // the finally block runs regardless of whether an error occurs or not
-                setIsLoading(false);    // to prevent an endless loop of same effect again and again on rerenders and state changes
+                isMounted && setIsLoading(false);    // to prevent an endless loop of same effect again and again on rerenders and state changes
             }
         }
 
         !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false); // run this function only if the accessToken is not present
+
+        return () => {isMounted = false} // cleanup on unmounting the component
 
     }, [])
 
