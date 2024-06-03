@@ -16,7 +16,10 @@ const useRefreshToken = () => {
         setAuth(prev => { // updates the authentication state // the 1st arg/element returned by useState hook is the current state (prev)
             console.log(JSON.stringify(prev))
             console.log(response.data.accessToken);
-            return {...prev, accessToken: response.data.accessToken}    // creates a new object by spreading the properties of prevState and overriding the accessToken property with the new value obtained from the API response
+            return {
+                ...prev, 
+                rolse: response.data.roles,
+                accessToken: response.data.accessToken}    // creates a new object by spreading the properties of prevState and overriding the accessToken property with the new value obtained from the API response
         })
         return response.data.accessToken; // return the new access token
     }
