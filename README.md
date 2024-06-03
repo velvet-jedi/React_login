@@ -15,6 +15,8 @@
 * useNavigate for programmatic navigation
 * Role based authorization
 * Component lifecycle management using useEffect (mount)
-* Refresh token and access token
+* Refresh token and access token stored in state so that js can't reach them
 * Session management
 * Interceptor for private axios (separation of concerns) attaching JWT and retry reqeusts
+* Secure Persistent Logins authentication with JWT without local storage of cookies or session storage (securely)
+* 
