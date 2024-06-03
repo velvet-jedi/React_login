@@ -39,14 +39,15 @@ const PersistLogin = () => {
     return (
         <>
             { !persist
-                ? <Outlet />
+                ? <Outlet /> // assume user alreary authenticated and no need od token refresh
                     : isLoading 
-                    ? <p>Loading...</p>
-                    : <Outlet/> /*represents children of the PersistLogin route/component. these are the protected routes */
+                    ? <p>Loading...</p> // if currently going through a token refresh show a loading message until the process is done
+                    : <Outlet/> /*represents children of the PersistLogin route/component. these are the protected routes we display with a new token refresh*/
             }
         </>
     )
-
+    // persist is true: This means the user's session should be persisted. In this case, the component may attempt to refresh the authentication token if needed.
+    // persist is false: This means the user's session should not be persisted across page reloads.
 }
 
 
