@@ -10,7 +10,7 @@ const LOGIN_URL= '/auth';
 //functional component
 const Login = () => {
     // const {setAuth} = useContext(AuthContext);
-    const {setAuth} = useAuth();
+    const {setAuth, persist, setPersist} = useAuth();
 
     const navigate = useNavigate();
    
@@ -73,6 +73,16 @@ const Login = () => {
         }        
     }
 
+
+    const togglePersist = () => {
+        setPersist(prev => !prev);
+    }
+
+    useEffect(() => {
+        localStorage.setItem("persist", persist);
+    },[persist])
+
+
     return (
         // <>
         // {
@@ -119,6 +129,15 @@ const Login = () => {
                 />
 
                 <button>Sign In</button>
+                <div className="persistCheck">
+                    <input 
+                        type="checkbox" 
+                        onChange={togglePersist} 
+                        id="persist" 
+                        checked={persist}   // set checed to persist state
+                        />
+                </div>
+                <label htmlFor="persist">Trust this Device</label>
 
             </form>
 
