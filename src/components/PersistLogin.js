@@ -16,9 +16,30 @@ const PersistLogin = () => {
             } catch (error) {
                 console.log(error);
             }
-            finally {
-                setIsLoading(false);    // to prevent an endless loop on rerenders and state changes
+            finally { // the finally block runs regardless of whether an error occurs or not
+                setIsLoading(false);    // to prevent an endless loop of same effect again and again on rerenders and state changes
             }
         }
+
+        !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false); // run this function only if the accessToken is not present
+
     }, [])
+
+    useEffect(() => {   
+        console.log(`isLoading: ${isLoading}`)
+        console.log(`aT: ${JSON.stringify(auth?.accessToken)}`)
+    }, [isLoading])
+
+    return (
+        <>
+            {isLoading} ?
+                <p>Loading...</p>
+                 : <Outlet/> {/*represents children of the PersistLogin route/component */} 
+
+        </>
+    )
+
 }
+
+
+export default PersistLogin
