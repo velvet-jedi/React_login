@@ -35,7 +35,6 @@ const PersistLogin = () => {
             {isLoading} ?
                 <p>Loading...</p>
                  : <Outlet/> {/*represents children of the PersistLogin route/component */} 
-
         </>
     )
 

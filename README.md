@@ -21,4 +21,4 @@
 * Secure Persistent Logins authentication with JWT without local storage of cookies or session storage (securely)
 
 ### Security Issue 1
-* Stitch the sign out properly so when user is inactive it logs out and their sessions is not accessible by some other user.
+* Stitch the sign out properly so when user is inactive (forgot to logout) it logs out and their sessions is not accessible by some other user. Solve it by "trust a device check"
